@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Mapa d'events</title>
+    <meta charset="utf-8"/>
+    <link rel="stylesheet" href="/css/material-css.css"/>
+    <link rel="stylesheet" href="/css/default-theme.css"/>
+    <style>
+        .no-transform {
+            text-transform: none;
+        }
+    </style>
+</head>
+<body ng-app="journalism">
+    <div class="mc-navigation">
+        <div id="normalMenuHeader" class="mc-header-menu">
+            <span class="mc-button mc-button-icon mc-clickable" mc-action="prev"></span>
+            <p class="mc-title">Events</p>
+        </div>
+        <a class="mc-nav-item" href="#/event/1">Ciutat Morta</a>
+        <a class="mc-nav-item" href="#/event/1">Empresari Raval (Juan André Benítez)</a>
+        <a class="mc-nav-item" href="#/event/1">Ester Quintana</a>
+    </div>
+    <header class="mc-header">
+        <div class="mc-header-line">
+            <span class="mc-button mc-button-icon mc-clickable" mc-action="menu"></span>
+            <p class="no-transform mc-title">Mapa d'events</p>
+        </div>
+    </header>
+    <div class="mc-content" ng-view="">
+        <p>Test</p>
+    </div>
+<script type="text/javascript" src="/js/jquery.min.js"></script>
+<script type="text/javascript" src="/js/material-css.js"></script>
+<script type="text/javascript" src="/js/angular.min.js"></script>
+<script type="text/javascript" src="/js/angular-route.js"></script>
+<script type="text/javascript" src="app.js"></script>
+</body>
+</html>

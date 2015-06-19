@@ -877,14 +877,4 @@ $(document).ready(function(mc){
 		
 	}
 	
-	if( /localhost/.test(location.href) == false && /192.168/.test(location.href) == false){
-		$.ajax({
-			type : 'POST',
-			dataType : 'jsonp', 
-			crossDomain: true,
-			url : 'http://www.imperdiblesoft.com/APIs/stats.php',
-			data : {}
-		});
-	}
-	
 });
