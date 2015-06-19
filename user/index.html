@@ -1,6 +1,23 @@
 <!DOCTYPE html>
 <html>
 <head>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+    $(".btn1").click(function(){
+    	$(".btn1").color="green";
+        $(".c1").hide(500);
+    });
+     $(".btn2").click(function(){
+     	$(".btn2").color="green";
+        $(".c2").hide(500);
+    });
+     $(".btn3").click(function(){
+     	$(".btn3").color="green";
+        $(".c3").hide(500);
+    });
+});
+</script>
     <title>Entrevistadores y entrevistados</title>
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"/>
@@ -27,7 +44,7 @@
         </div>
     </header>
     <div class="mc-content">
-        <div class="mc-card">
+        <div class="mc-card c1">
             <div class="mc-header">
                 <img src="/img/bcntv.jpg"></img> 
                 <h1 class="mc-title">caso 4F / Ciutat Morta</h1>
@@ -37,11 +54,11 @@
                 <div class="mc-right">
                     <p class="mc-text">El llamado caso 4F es un caso de corrupción policial a raíz de los hechos sucedidos el 4 de febrero de 2006 en Barcelona, cuando la Guardia Urbana detuvo a varios jóvenes, que fueron condenados e ingresaron a prisión por su supuesta relación con la agresión de un agente de la Guardia Urbana durante el desalojo del edificio Palau Alòs, hasta entonces ocupado. Una de ellas, la psicóloga Patricia Heras, se suicidó durante un permiso penitenciario en 2011.1 2.
                         Estamos buscando possibles testimonios que quiera colaborar en documentar el evento</p>
-                    <span class="mc-button mc-button-comb mc-clickable" mc-action="navigation">Entrevista'm!</span>
+                    <span class="btn1 mc-button mc-button-comb mc-clickable" mc-action="navigation" style="width:96%; text-align:center">Entrevista'm!</span>
                 </div>
             </div>
         </div>
-        <div class="mc-card">
+        <div class="mc-card c2">
             <div class="mc-header">
                 <img src="/img/elperiodico.jpg"></img>
                 <h1 class="mc-title">Caso Empresario Raval</h1>
@@ -51,21 +68,21 @@
                 <div class="mc-right">
                     <p class="mc-text">Un hombre de mediana edad ha muerto este miércoles por la tarde en Barcelona después de haber sido reducido y esposado por los Mossos d'Esquadra en la plaza Molina del distrito de Sarrià-Sant Gervasi, según las primeras informaciones facilitadas por el cuerpo de seguridad autonómico.
                         Estamos buscando testimonios que nos pueden ayudar a saber que pasó. </p>
-                    <span class="mc-button mc-button-comb mc-clickable" mc-action="navigation">Entrevista'm!</span>
+                    <span class="btn2 mc-button mc-button-comb mc-clickable" mc-action="navigation" style="width:96%; text-align:center">Entrevista'm!</span>
                 </div>
             </div>
         </div>
-        <div class="mc-card">
+        <div class="mc-card c3">
             <div class="mc-header">
                 <img src="/img/elperiodico.jpg"></img>
-                <h1 class="mc-title">Ester Quintana</h1>
+                <h1 class="mc-title">CEster Quintana</h1>
                 <h2 class="mc-subtitle">El Periódico</h2>
             </div>
             <div class="mc-content">
-                <div class="mc-right">
+                <div class="mc-right" style="text-align:center">
                     <p class="mc-text">Ester Quintana és una barcelonina que va perdre un ull per un impacte en la manifestació de Barcelona de la vaga general de 14 de novembre de 2012 i sosté que la seva lesió va ser producte del llançament d'un projectil per part dels Mossos d'Esquadra.
                     Estem buscant testimonis d'aquest malaurat event. </p>
-                    <span class="mc-button mc-button-comb mc-clickable" mc-action="navigation">Entrevista'm!</span>
+                    <span id="borrar" class="btn3 mc-button mc-button-comb mc-clickable" mc-action="navigation" style="width:96%; text-align:center">Entrevista'm!</span>
                 </div>
             </div>
         </div>
