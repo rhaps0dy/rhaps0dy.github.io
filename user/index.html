@@ -10,15 +10,19 @@
     <link rel="stylesheet" href="/css/default-theme.css"/>
 </head>
 <body mc-layout="front">
-    <div class="mc-navigation">
+    <nav class="mc-navigation mc-accountinfo">
         <div id="normalMenuHeader" class="mc-header-menu">
-            <span class="mc-button mc-button-icon mc-clickable" mc-action="prev"></span>
-            <p class="mc-title">menu</p>
+            <span class="mc-button mc-button-icon mc-clickable" mc-action="prev">
+            </span>
         </div>
-        <a class="mc-nav-item">Hey yo</a>
-        <a class="mc-nav-item">Hey yo</a>
-        <a class="mc-nav-item">Hey yo</a>
-        <a class="mc-nav-item">Hey yo</a>
+        <div class="mc-header-menu mc-accountinfo" style="display:block">
+        	<img src="material-icons/mc-account-grey.png"class="mc-image">
+            <h1 class="mc-title">Jorge Perez Gonzalez</h1>
+            <p class="mc-text">612398123</p>
+        	<p class="mc-text">jorge.perico@gmail.com</p>
+        </div>
+        <a class="mc-nav-item" mc-action="cards">Publicaciones</a>
+        <a class="mc-nav-item" mc-action="settings">Settings</a>
     </div>
     <header class="mc-header">
         <div class="mc-header-line">
