@@ -17,7 +17,11 @@ function($scope, $routeParams) {
     $scope.eventName = events[id].name;
     $scope.media = events[id].media;
     $scope.text = events[id].text;
-    $scope.names = [{name: "Jorge Alemán González", phone: "(+34) 612 345 678", picture: "/img/jorge.jpg"}
-                   ,{name: "Adrià Garriga Alonso", phone: "(+34) 612 345 678", picture: "/img/adria.jpg"}
-                   ,{name: "Marcel Farrés Franch", phone: "(+34) 612 345 678", picture: "/img/marcel.jpg"}];
+    var names = [{name: "Jorge Alemán González", email: "jorge@gmail.com", phone: "(+34) 612 345 678", picture: "/img/jorge.jpg"}
+                   ,{name: "Adrià Garriga Alonso", email: "adria@gmail.com", phone: "(+34) 612 345 678", picture: "/img/adria.jpg"}
+                   ,{name: "Marcel Farrés Franch", email: "marcel@gmail.com", phone: "(+34) 612 345 678", picture: "/img/marcel.jpg"}];
+    $scope.names = [];
+    for(var i=0; i<3; i++) {
+        $scope.names[(i+id)%3] = names[i];
+    }
 }]);

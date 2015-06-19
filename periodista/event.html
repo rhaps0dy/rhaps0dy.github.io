@@ -22,8 +22,9 @@
                 <img ng-src="{{ name.picture }}"></img> 
                 <h1 class="mc-title" ng-bind="name.name"></h1>
                 <h2 class="mc-subtitle" ng-bind="name.phone"></h2>
+                <h2 class="mc-subtitle" ng-bind="name.email"></h2>
                 <div class="mc-right">
-                    <span ng-class="{active: name.active}" class="mc-button mc-button-icon done-button" ng-click="active=true;"></span>
+                    <span ng-class="{active: active}" class="mc-button mc-button-icon done-button" ng-click="active=true;"></span>
                     <span class="mc-button mc-button-icon cancel-button" ng-click="show=false;"></span>
                 </div>
             </div>
