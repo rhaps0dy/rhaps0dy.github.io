@@ -1,3 +1,32 @@
 <div class="mc-layout" mc-layout="2">
-    <div class="mc-layout" mc-layout-size="medium">
+    <div class="mc-layout" mc-layout-size="normal">
+        <div class="mc-card">
+            <div class="mc-header">
+                <img src="/img/bcntv.jpg"></img> 
+                <h1 class="mc-title" ng-bind="eventName"></h1>
+                <h2 class="mc-subtitle" ng-bind="media"></h2>
+            </div>
+            <div class="mc-content">
+                <div class="mc-right">
+                    <p class="mc-text" ng-bind="text"></p>
+                    <div class="mc-right">
+                        <span class="mc-button mc-button-comb mc-clickable" mc-action="edit">Editar</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="mc-layout" mc-layout-size="normal">
+        <div class="mc-card" ng-init="show=true; active=false;" ng-show="show" ng-repeat="name in names">
+            <div class="mc-header">
+                <img ng-src="{{ name.picture }}"></img> 
+                <h1 class="mc-title" ng-bind="name.name"></h1>
+                <h2 class="mc-subtitle" ng-bind="name.phone"></h2>
+                <div class="mc-right">
+                    <span ng-class="{active: name.active}" class="mc-button mc-button-icon done-button" ng-click="active=true;"></span>
+                    <span class="mc-button mc-button-icon cancel-button" ng-click="show=false;"></span>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

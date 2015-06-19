@@ -9,17 +9,42 @@
         .no-transform {
             text-transform: none;
         }
+        .cancel-button {
+            background-color: #ffeeee;
+            background-image: url("/material-icons/mc-cancel-light.png");
+            border-color: red;
+            border-width: 1px;
+            border-style: solid;
+        }
+        .cancel-button:hover {
+            background-color: red;
+            background-image: url("/material-icons/mc-cancel-dark.png");
+        }
+        .done-button {
+            background-color: #eeffee;
+            background-image: url("/material-icons/mc-done-light.png");
+            border-color: green;
+            border-width: 1px;
+            border-style: solid;
+        }
+        .done-button:hover, .done-button.active {
+            background-color: green;
+            background-image: url("/material-icons/mc-done-dark.png");
+        }
     </style>
 </head>
 <body ng-app="journalism">
     <div class="mc-navigation">
         <div id="normalMenuHeader" class="mc-header-menu">
             <span class="mc-button mc-button-icon mc-clickable" mc-action="prev"></span>
-            <p class="mc-title">Events</p>
+            <p class="mc-title">Menu</p>
         </div>
-        <a class="mc-nav-item" href="#/event/1">Ciutat Morta</a>
-        <a class="mc-nav-item" href="#/event/1">Empresari Raval (Juan André Benítez)</a>
-        <a class="mc-nav-item" href="#/event/1">Ester Quintana</a>
+        <a class="mc-nav-item" href="#/" mc-action="location">Mapa</a>
+        <a class="mc-nav-item" mc-action="list">Entrevistes</a>
+        <a class="mc-nav-subitem" href="#/event/1">Ciutat Morta</a>
+        <a class="mc-nav-subitem" href="#/event/1">Empresari Raval (Juan André Benítez)</a>
+        <a class="mc-nav-subitem" href="#/event/1">Ester Quintana</a>
+        <a class="mc-nav-item" mc-action="settings">Settings</a>
     </div>
     <header class="mc-header">
         <div class="mc-header-line">
@@ -27,8 +52,7 @@
             <p class="no-transform mc-title">Mapa d'events</p>
         </div>
     </header>
-    <div class="mc-content" ng-view="">
-        <p>Test</p>
+    <div class="mc-content" style="margin-top: -60px;" ng-view="">
     </div>
 <script type="text/javascript" src="/js/jquery.min.js"></script>
 <script type="text/javascript" src="/js/material-css.js"></script>
