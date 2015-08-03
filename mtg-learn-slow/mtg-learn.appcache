@@ -1,0 +1,19 @@
+CACHE MANIFEST
+# rev 1 - 2015-07-27T12:34:40.537Z
+
+CACHE:
+index.html
+main.js
+style.css
+images/working.gif
+//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css
+//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/fonts/glyphicons-halflings-regular.woff
+
+NETWORK:
+data/blueBossa.ogg
+data/blueBossa.xml
+//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css
+//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/fonts/glyphicons-halflings-regular.woff
+
+FALLBACK:
+/ index.html

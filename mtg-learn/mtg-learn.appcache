@@ -1,11 +1,13 @@
 CACHE MANIFEST
-# rev 1 - 2015-07-27T12:34:40.537Z
+# rev 1 - 2015-08-03T22:21:03.868Z
 
 CACHE:
+audio_analysis.js
+audio_analysis.js.mem
 index.html
 main.js
 style.css
-images/working.gif
+images/loading.gif
 //maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css
 //maxcdn.bootstrapcdn.com/bootstrap/3.3.5/fonts/glyphicons-halflings-regular.woff
 
