@@ -1,5 +1,5 @@
 CACHE MANIFEST
-# rev 1 - 2015-08-23T16:41:16.577Z
+# rev 1 - 2015-08-23T16:58:26.583Z
 
 CACHE:
 audio_analysis.js
@@ -11,6 +11,7 @@ style.css
 images/loading.gif
 //maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css
 //maxcdn.bootstrapcdn.com/bootstrap/3.3.5/fonts/glyphicons-halflings-regular.woff
+//cwilso.github.io/AudioContext-MonkeyPatch/AudioContextMonkeyPatch.js
 
 NETWORK:
 data/blueBossa.ogg
