@@ -1,11 +1,12 @@
 CACHE MANIFEST
-# rev 1 - 2015-08-18T00:03:00.562Z
+# rev 1 - 2015-08-23T16:41:16.577Z
 
 CACHE:
 audio_analysis.js
 audio_analysis.js.mem
 index.html
 main.js
+metronome_worker.js
 style.css
 images/loading.gif
 //maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css
