@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8"/>
+    <title>Test</title>
+    <link rel="stylesheet" href="style.css"/>
+    <script type="text/javascript" src="/lib/jquery-2.1.4.min.js"></script>
+    <script src="/lib/three.min.js"></script>
+    <script src="/lib/stats.min.js"></script>
+    <script src="/lib/tween.min.js"></script>
+    <script src="/lib/Sparks.js"></script>
+    <script src="/lib/optimer_regular.typeface.js"></script>
+
+  </head>
+  <body>
+    <audio>
+      <source src='/audio/baile-mascaras.mp3' type='audio/mpeg' />
+      <source src='/audio/baile-mascaras.ogg' type='audio/ogg' />
+    </audio>
+    <div id="container"></div>
+    <script>
+    window.songData = {
+        cover_url: "/img/ewans.png",
+        name: "Baile de Mascaras",
+        artist: "The Ewan's"
+    };
+    </script>
+    <script type="x-shader/x-vertex" id="vertexshader">
+
+            attribute float size;
+            attribute vec3 pcolor;
+
+            varying vec3 vColor;
+
+            void main() {
+
+                vColor = pcolor;
+
+                vec4 mvPosition = modelViewMatrix * vec4( position, 1.0 );
+
+                gl_PointSize = size * 10.0;
+
+                gl_Position = projectionMatrix * mvPosition;
+
+            }
+
+    </script>
+
+    <script type="x-shader/x-fragment" id="fragmentshader">
+
+            uniform sampler2D texture;
+
+            varying vec3 vColor;
+
+            void main() {
+
+                    vec4 outColor = texture2D( texture, gl_PointCoord );
+
+                    gl_FragColor = outColor * vec4( vColor, 1.0 );
+
+            }
+    </script>
+    <script type="x-shader/x-vertex" id="gcoord">
+        uniform sampler2D heightMap;
+        uniform sampler2D waveform;
+        varying vec2 vUV;
+
+        const float pi = 3.141592653589793;
+
+        vec2 calcHeightShift() {
+            float theta;
+            if(abs(vUV.y) <= 0.0000001) {
+                theta = vUV.y > 0.0 ? pi/2.0 : -pi/2.0;
+            } else {
+                theta = atan(vUV.y, vUV.x);
+            }
+            float shift = texture2D(waveform, vec2(theta / (2.*pi) + 0.5, 0.5)).w;
+            shift = abs(shift);
+            float length_squared = vUV.x * vUV.x + vUV.y * vUV.y;
+            float length = length(vUV);
+            length += shift * (0.2 * length_squared + 0.2 * length);
+            if(length > 1.0)
+                length -= 1.0;
+            float height = texture2D(heightMap, vec2(length, 0.5)).w;
+            return vec2(height, shift);
+        }
+    </script>
+    <script type="x-shader/x-vertex" id="heightmapvshader">
+        void main() {
+            vUV = (1./800.) * position.xy;
+
+            float height = 100.0 * calcHeightShift().x;
+            vec4 pos = vec4(position.x, position.y, max(height, 1.0), 1.0);
+            gl_Position = projectionMatrix * modelViewMatrix * pos;
+        }
+    </script>
+    <script type="x-shader/x-fragment" id="heightmapfshader">
+        void main() {
+            vec2 heightShift = calcHeightShift();
+            float shift = heightShift.y;
+            vec3 col = vec3(1., 1., 1.);
+            gl_FragColor = vec4(heightShift.x * col, 1.0);
+        }
+    </script>
+    <script encoding="utf-8" type="text/javascript" src="script.js"></script>
+  </body>
+</html>
+      
+
+

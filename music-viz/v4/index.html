@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8"/>
+    <title>Test</title>
+    <link rel="stylesheet" href="style.css"/>
+    <script type="text/javascript" src="/lib/jquery-2.1.4.min.js"></script>
+    <script src="/lib/three.min.js"></script>
+    <script src="/lib/stats.min.js"></script>
+    <script src="/lib/tween.min.js"></script>
+    <script src="/lib/Sparks.js"></script>
+    <script src="/lib/optimer_regular.typeface.js"></script>
+
+  </head>
+  <body>
+    <audio>
+      <source src='/audio/mozart.mp3' type='audio/mpeg' />
+      <source src='/audio/mozart.ogg' type='audio/ogg' />
+    </audio>
+    <div id="container"></div>
+    <script type="x-shader/x-vertex" id="gcoord">
+        uniform sampler2D heightMap;
+        uniform float i;
+        varying vec3 vPosition;
+        varying vec3 vNormal;
+
+        const float pi = 3.141592653589793;
+        const float HISTORY_LEN = 256.0;
+        const float BUFFER_SIZE = 128.0;
+    </script>
+    <script type="x-shader/x-vertex" id="heightmapvshader">
+        void main() {
+            vec2 vUV = vec2(position.x / BUFFER_SIZE + 0.5, position.y / HISTORY_LEN + 0.5);
+            vUV.y -= i / HISTORY_LEN;
+            if(vUV.y < 0.0)
+                vUV.y += 1.0;
+            float height = texture2D(heightMap, vUV).w;
+            vPosition = vec3(position.x, position.y, height);
+            gl_Position = projectionMatrix * modelViewMatrix * vec4(vPosition, 1.0);
+
+            vec3 tangent, bitangent;
+            float h_neighbor = texture2D(heightMap, vec2(vUV.x + 1./HISTORY_LEN, vUV.y)).w;
+            tangent = vec3(1./HISTORY_LEN, h_neighbor - height, 0.0);
+            h_neighbor = texture2D(heightMap, vec2(vUV.x, vUV.y + 1./HISTORY_LEN)).w;
+            bitangent = vec3(0, h_neighbor - height, 1./HISTORY_LEN);
+            vNormal = -cross(tangent, bitangent);
+        }
+    </script>
+    <script type="x-shader/x-fragment" id="heightmapfshader">
+
+        void main() {
+            vec3 nor, col;
+            if(vPosition.z < 0.01) {
+                col = vec3(0.0, 0.0, 1.0);
+                nor = vec3(0., 1., 0.);
+            } else if(vPosition.z < 0.3) {
+                col = vec3(0.0, 1.0, 0.0);
+                nor = normalize(vNormal);
+            } else if(vPosition.z < 0.4) {
+                col = vec3(.5, .5, .5);
+                nor = normalize(vNormal);
+            } else {
+                col = vec3(1.2, 1.2, 1.2);
+                nor = normalize(vNormal);
+            }
+
+            vec3 lvec = normalize(vec3(500., 500., -500.) - vPosition);
+            float plight = max(dot(lvec, nor), 0.0);
+            float dlight = max(dot(normalize(vec3(0.0, 1., 1.0)), nor), 0.0);
+
+            gl_FragColor =  (.2 + .5 * plight + .5 * dlight) * vec4(col, 1.0);
+        }
+    </script>
+    <script type="x-shader/x-vertex" id="cloudsvshader">
+        void main() {
+            gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
+        }
+    </script>
+    <script type="x-shader/x-fragment" id="cloudsfshader">
+        void main() {
+            gl_FragColor =  vec4(.5, .5, 1., 1.);
+        }
+    </script>
+    <script encoding="utf-8" type="text/javascript" src="script.js"></script>
+  </body>
+</html>
+      
+
+
